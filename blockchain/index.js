@@ -28,7 +28,7 @@ class Blockchain {
 
   replaceChain(newChain) {
     if (newChain.length <= this.chain.length)
-      throw new Error('Recived chain is not longer than the current chain.')
+      throw new Error('Recived chain is not longer than the current chain.');
     else if (!this.isValidChain(newChain))
       throw new Error('Recieved chain is not valid.');
     else
