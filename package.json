@@ -1,5 +1,5 @@
 {
-  "name": "basic-blockchain",
+  "name": "blockchain-viewer",
   "version": "1.0.0",
   "description": "Basic blockchain with its own API",
   "main": "index.js",
