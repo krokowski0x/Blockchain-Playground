@@ -13,7 +13,7 @@ class Block {
 
   toString() {
     return `Block -
-      Timesamp  : ${this.timestamp}
+      Timestamp : ${this.timestamp}
       Last Hash : ${this.lastHash.substring(0, 10)}
       Hash      : ${this.hash.substring(0, 10)}
       Nonce     : ${this.nonce}
@@ -22,13 +22,13 @@ class Block {
   };
 
   static genesis() {
-    return new this('Genesis time', '---------', 'f1r57-h45h', [], 0, DIFFICULTY);
+    return new this('Genesis time', '-----', 'f1r57-h45h', [], 0, DIFFICULTY);
   };
 
   static mineBlock(lastBlock, data) {
+    let hash, timestamp;
     const lastHash = lastBlock.hash;
     let { difficulty } = lastBlock;
-    let hash, timestamp;
     let nonce = 0;
 
     do {
