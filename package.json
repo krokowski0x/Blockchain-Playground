@@ -4,9 +4,8 @@
   "description": "Basic blockchain with its own API",
   "main": "index.js",
   "scripts": {
-    "start": "node ./app",
-    "dev": "nodemon ./app",
-    "test": "jest --watchAll"
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html/"
   },
   "jest": {
     "testEnvironment": "node"
@@ -14,10 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "crypto-js": "^3.1.9-1",
     "elliptic": "^6.4.0",
     "express": "^4.16.3",
+    "node-sass": "^4.9.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "uuid": "^3.3.2",
     "ws": "^5.2.2"
   },
