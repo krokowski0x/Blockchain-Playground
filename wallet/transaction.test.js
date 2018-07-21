@@ -36,13 +36,9 @@ describe('Transaction', () => {
   });
 
   describe('transacting with an amount that exceeds the balance', () => {
-    beforeEach(() => {
-      amount = 50000;
-      transaction = Transaction.newTransaction(wallet, recipient, amount);
-    });
-
     it('does not create the transaction', () => {
-      expect(transaction).toEqual(undefined);
+      amount = 50000;
+      expect(() => Transaction.newTransaction(wallet, recipient, amount)).toThrow();
     });
   });
 
