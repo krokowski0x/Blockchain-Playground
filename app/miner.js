@@ -7,7 +7,7 @@ class Miner {
     this.transactionPool = transactionPool;
     this.wallet = wallet;
     this.p2pServer = p2pServer;
-  }
+  };
 
   mine() {
     const validTransactions = this.transactionPool.validTransactions();
@@ -18,7 +18,7 @@ class Miner {
     this.p2pServer.broadcastClearTransactions();
 
     return block;
-  }
+  };
 }
-
+;
 module.exports = Miner;

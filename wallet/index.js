@@ -22,16 +22,14 @@ class Wallet {
   createTransaction(recipient, amount, blockchain, transactionPool) {
     this.balance = this.calculateBalance(blockchain);
 
-    if (amount > this.balance) {
-      console.log(`Amount: ${amount} exceceds current balance: ${this.balance}`);
-      return;
-    }
+    if (amount > this.balance)
+      throw new Error (`Amount: ${amount} exceceds current balance: ${this.balance}`);
 
     let transaction = transactionPool.existingTransaction(this.publicKey);
 
-    if (transaction) {
+    if (transaction)
       transaction.update(this, recipient, amount);
-    } else {
+    else {
       transaction = Transaction.newTransaction(this, recipient, amount);
       transactionPool.updateOrAddTransaction(transaction);
     }
@@ -52,8 +50,10 @@ class Wallet {
     let startTime = 0;
 
     if (walletInputTs.length > 0) {
-      const recentInputT = walletInputTs.reduce(
-        (prev, current) => prev.input.timestamp > current.input.timestamp ? prev : current
+      const recentInputT = walletInputTs.reduce((prev, current) =>
+        prev.input.timestamp > current.input.timestamp
+        ? prev
+        : current
       );
 
       balance = recentInputT.outputs.find(output => output.address === this.publicKey).amount;
@@ -63,9 +63,8 @@ class Wallet {
     transactions.forEach(transaction => {
       if (transaction.input.timestamp > startTime) {
         transaction.outputs.find(output => {
-          if (output.address === this.publicKey) {
+          if (output.address === this.publicKey)
             balance += output.amount;
-          }
         });
       }
     });

@@ -11,10 +11,8 @@ class Transaction {
   update(senderWallet, recipient, amount) {
     const senderOutput = this.outputs.find(output => output.address === senderWallet.publicKey);
 
-    if (amount > senderOutput.amount) {
-      console.log(`Amount: ${amount} exceeds balance.`);
-      return;
-    }
+    if (amount > senderOutput.amount)
+      throw new Error(`Amount: ${amount} exceeds balance.`);
 
     senderOutput.amount = senderOutput.amount - amount;
     this.outputs.push({ amount, address: recipient });
@@ -31,20 +29,24 @@ class Transaction {
   };
 
   static newTransaction(senderWallet, recipient, amount) {
-    if (amount > senderWallet.balance) {
-      console.log(`Amount: ${amount} exceeds balance.`);
-      return;
-    }
+    if (amount > senderWallet.balance)
+      throw new Error(`Amount: ${amount} exceeds balance.`);
 
     return Transaction.transactionWithOutputs(senderWallet, [
-      { amount: senderWallet.balance - amount, address: senderWallet.publicKey },
-      { amount, address: recipient }
+      {
+        amount: senderWallet.balance - amount,
+        address: senderWallet.publicKey
+      }, {
+        amount,
+        address: recipient
+      }
     ]);
   }
 
   static rewardTransaction(minerWallet, blockchainWallet) {
     return Transaction.transactionWithOutputs(blockchainWallet, [{
-      amount: MINING_REWARD, address: minerWallet.publicKey
+      amount: MINING_REWARD,
+      address: minerWallet.publicKey
     }]);
   };
 
