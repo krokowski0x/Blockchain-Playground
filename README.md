@@ -9,7 +9,7 @@ This project started as a basic blockchain [Udemy](https://www.udemy.com/build-b
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - Needs no introduction
-* [React](https://reactjs.org/) - king of all JS frameworks
+* [React](https://reactjs.org/) - king of all JS frameworks with [React Router](https://reacttraining.com/react-router/) for routing
 * [Parcel](https://parceljs.org/) - waaay better module bundler than [Webpack](https://webpack.js.org/)
 * [Babel](https://babeljs.io/) - ES5 to ES6+ compiler
 * [Postman](https://www.getpostman.com/) - API endpoints testing tool
