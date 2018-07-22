@@ -4,9 +4,11 @@ import { Router, Route } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
 
+const history = createBrowserHistory();
+
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Route exact path='/' component={Dashboard} />
       </div>
