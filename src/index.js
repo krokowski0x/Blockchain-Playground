@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router-dom';
-
+import createBrowserHistory from 'history/createBrowserHistory';
 import Dashboard from './components/Dashboard';
+
+import './sass/styles.scss';
 
 const history = createBrowserHistory();
 
