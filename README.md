@@ -1,10 +1,10 @@
-# Blockchain Viewer
+# Blockchain Playground
 
-Blockchain and cryptocurrency with educational frontend.
+Blockchain and cryptocurrency with educational playground.
 
 ## Brief Description
 
-This project started as a basic blockchain [Udemy](https://www.udemy.com/build-blockchain/) course in Mid 2018, but currently, it's purpose is to have React-based frontend, showing exactly how blockchain, mining and transactions work in real time.
+This project started as a basic blockchain [Udemy](https://www.udemy.com/build-blockchain/) course in Mid 2018, but currently, it's purpose is to have React-based frontend, showing exactly how blockchain, mining and transactions work in real time via interactive playground.
 
 ## Built With
 

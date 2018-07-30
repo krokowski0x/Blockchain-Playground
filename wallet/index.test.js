@@ -1,6 +1,6 @@
-const Wallet = require('./index');
-const TransactionPool = require('./transaction-pool');
-const Blockchain = require('../blockchain');
+const Wallet =              require('./index');
+const TransactionPool =     require('./transaction-pool');
+const Blockchain =          require('../blockchain');
 const { INITIAL_BALANCE } = require('../config');
 
 describe('Wallet', () => {
@@ -45,9 +45,9 @@ describe('Wallet', () => {
       senderWallet = new Wallet();
       addBalance = 100;
       repeatAdd = 3;
-      for (let i=0; i<repeatAdd; i++) {
+      for (let i of repeatAdd)
         senderWallet.createTransaction(wallet.publicKey, addBalance, bc, tp);
-      }
+
       bc.addBlock(tp.transactions);
     });
 

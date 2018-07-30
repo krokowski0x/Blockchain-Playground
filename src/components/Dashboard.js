@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
-import Chapter from './Chapter';
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
