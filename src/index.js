@@ -4,8 +4,6 @@ import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import Dashboard from './components/Dashboard';
 
-import './styles.scss';
-
 const history = createBrowserHistory();
 
 const App = () => {
