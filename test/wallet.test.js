@@ -1,7 +1,7 @@
-const Wallet =              require('./index');
-const TransactionPool =     require('./transaction-pool');
-const Blockchain =          require('../blockchain');
-const { INITIAL_BALANCE } = require('../config');
+const Wallet =              require('../wallet/wallet');
+const TransactionPool =     require('../wallet/transaction-pool');
+const Blockchain =          require('../blockchain/blockchain');
+const { INITIAL_BALANCE } = require('../blockchain/config');
 
 describe('Wallet', () => {
   let wallet, tp, bc;

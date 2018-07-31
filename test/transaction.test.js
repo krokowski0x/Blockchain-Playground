@@ -1,6 +1,6 @@
-const Transaction = require('./transaction');
-const Wallet = require('./index');
-const { MINING_REWARD } = require('../config');
+const Transaction =       require('../wallet/transaction');
+const Wallet =            require('../wallet/wallet');
+const { MINING_REWARD } = require('../blockchain/config');
 
 describe('Transaction', () => {
   let transaction, wallet, recipient, amount;
