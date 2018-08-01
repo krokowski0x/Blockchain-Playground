@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import posed from "react-pose";
 import styled from "styled-components";
 
@@ -14,7 +13,7 @@ const Container = styled.div`
 `;
 
 
-export default class Dashboard extends Component {
+export default class BlockPlayground extends Component {
   constructor() {
     super();
     this.state = {};
@@ -23,14 +22,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <Container>
-        <h1>Blockchain Playground</h1>
-        <h3>This app will help You undarstand basics of blockchain technology, as well as cryptocurrencies based on it. Let's dive in!</h3>
-        <Link to='block'>
-          Block
-        </Link>
-        <Link to='blockchain'>
-          Blockchain
-        </Link>
+
       </Container>
     );
   }

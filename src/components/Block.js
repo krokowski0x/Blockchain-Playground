@@ -4,16 +4,17 @@ import styled from "styled-components";
 
 const Square = posed.div({
   idle: { scale: 1 },
-  hovered: { scale: 1.5 }
+  hovered: { scale: 2 }
 });
 
 const StyledSquare = styled(Square)`
   text-align: center;
   display: inline-block;
-  padding: 2em;
+  padding: 1em;
   margin-right: 1em;
+  margin-bottom: 1em;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1em;
   border-radius: 10px;
   background: transparent;
   color: black;
@@ -34,7 +35,12 @@ export default class Block extends Component {
         pose={this.state.hovering ? "hovered" : "idle"}
         onMouseEnter={() => this.setState({ hovering: true })}
         onMouseLeave={() => this.setState({ hovering: false })}
-      > Block
+      > {`BLOCK
+        Timestamp
+        Hash
+        Nonce
+        Difficulty
+        Data`}
       </StyledSquare>
     );
   }
