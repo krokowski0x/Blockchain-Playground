@@ -11,8 +11,8 @@ This project started as a basic blockchain [Udemy](https://www.udemy.com/build-b
 * [Node.js](https://nodejs.org/en/) - Needs no introduction
 * [React](https://reactjs.org/) - king of all JS frameworks with [React Router](https://reacttraining.com/react-router/) for routing
 * [Parcel](https://parceljs.org/) - waaay better module bundler than [Webpack](https://webpack.js.org/)
-* [Pose](https://popmotion.io/pose/) - Declarative motion system for React
-* [Styled components](https://www.styled-components.com/) - In-React CSS styling
+* [React Beautiful DnD](https://react-beautiful-dnd.netlify.com) - Drag n' drop lists for React
+* [Styled components](https://www.styled-components.com/) - CSS-in-React styling
 * [Babel](https://babeljs.io/) - ES5 to ES6+ compiler
 * [Postman](https://www.getpostman.com/) - API endpoints testing tool
 * [Express](https://expressjs.com/) - Web framework for Node
