@@ -12,7 +12,6 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-
 export default class BlockPlayground extends Component {
   constructor() {
     super();
@@ -22,7 +21,12 @@ export default class BlockPlayground extends Component {
   render() {
     return (
       <Container>
-
+        <h1>The Block</h1>
+        <h3>
+          The most basic part of the Blockchain is <b>The Block</b>.
+          Let's go through the components that are required to create a brand new Block, that will be sitting at the core of our blockchain.
+        </h3>
+        <button>Create The Block</button>
       </Container>
     );
   }

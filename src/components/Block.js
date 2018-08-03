@@ -1,13 +1,7 @@
-import React, { Component } from "react";
-import posed from "react-pose";
+import React, { Component } from "react"
 import styled from "styled-components";
 
-const Square = posed.div({
-  idle: { scale: 1 },
-  hovered: { scale: 2 }
-});
-
-const StyledSquare = styled(Square)`
+const StyledSquare = styled.div`
   text-align: center;
   display: inline-block;
   padding: 1em;
@@ -25,17 +19,14 @@ export default class Block extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hovering: false,
+      block = new Block()
     };
   };
 
   render() {
     return (
-      <StyledSquare
-        pose={this.state.hovering ? "hovered" : "idle"}
-        onMouseEnter={() => this.setState({ hovering: true })}
-        onMouseLeave={() => this.setState({ hovering: false })}
-      > {`BLOCK
+      <StyledSquare>
+        {`BLOCK
         Timestamp
         Hash
         Nonce
