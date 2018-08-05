@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import posed from "react-pose";
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 import styled from "styled-components";
 
 import Block from './Block';
+
+library.add(faStroopwafel);
 
 const Container = styled.div`
   margin: 0vh 10vw;
@@ -25,12 +29,7 @@ export default class Dashboard extends Component {
       <Container>
         <h1>Blockchain Playground</h1>
         <h3>This app will help You undarstand basics of blockchain technology, as well as cryptocurrencies based on it. Let's dive in!</h3>
-        <Link to='block'>
-          Block
-        </Link>
-        <Link to='blockchain'>
-          Blockchain
-        </Link>
+        <FontAwesomeIcon icon="stroopwafel" />
       </Container>
     );
   }
