@@ -1,8 +1,8 @@
-const ChainUtil = require('../chain-util');
-const Transaction = require('./transaction');
-const { INITIAL_BALANCE } = require('../config');
+import ChainUtil from '../chain-util';
+import Transaction from './transaction';
+import { INITIAL_BALANCE } from '../config';
 
-class Wallet {
+export default class Wallet {
   constructor() {
     this.balance = INITIAL_BALANCE;
     this.keyPair = ChainUtil.genKeyPair();
@@ -78,5 +78,3 @@ class Wallet {
     return blockchainWallet;
   };
 };
-
-module.exports = Wallet;

@@ -1,6 +1,6 @@
-const Transaction = require('../wallet/transaction');
+import Transaction from '../wallet/transaction';
 
-class TransactionPool {
+export default class TransactionPool {
   constructor() {
     this.transactions = [];
   };
@@ -38,5 +38,3 @@ class TransactionPool {
     this.transactions = [];
   };
 };
-
-module.exports = TransactionPool;

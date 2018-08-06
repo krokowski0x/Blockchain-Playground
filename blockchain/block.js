@@ -1,7 +1,7 @@
-const ChainUtil = require('../chain-util');
-const { DIFFICULTY, MINE_RATE } = require('../config');
+import ChainUtil from '../chain-util';
+import { DIFFICULTY, MINE_RATE } from '../config';
 
-class Block {
+export default class Block {
   constructor(timestamp, lastHash, hash, data, nonce, difficulty) {
     this.timestamp = timestamp;
     this.lastHash = lastHash;
@@ -57,5 +57,3 @@ class Block {
     : difficulty - 1;
   };
 };
-
-module.exports = Block;

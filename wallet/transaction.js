@@ -1,7 +1,7 @@
-const ChainUtil = require('../chain-util');
-const { MINING_REWARD } = require('../config');
+import ChainUtil from '../chain-util';
+import { MINING_REWARD } from '../config';
 
-class Transaction {
+export default class Transaction {
   constructor() {
     this.id = ChainUtil.id();
     this.input = null;
@@ -67,5 +67,3 @@ class Transaction {
     );
   };
 };
-
-module.exports = Transaction;

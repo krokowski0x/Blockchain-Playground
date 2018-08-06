@@ -1,10 +1,10 @@
-const express =         require('express');
-const bodyParser =      require('body-parser');
-const Blockchain =      require('../blockchain');
-const P2PServer =       require('./p2p-server');
-const Wallet =          require('../wallet');
-const TransactionPool = require('../wallet/transaction-pool');
-const Miner =           require('./miner');
+import express         from 'express';
+import bodyParser      from 'body-parser';
+import Blockchain      from '../blockchain';
+import P2PServer       from './p2p-server';
+import Wallet          from '../wallet';
+import TransactionPool from '../wallet/transaction-pool';
+import Miner           from './miner';
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 

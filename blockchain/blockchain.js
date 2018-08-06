@@ -1,6 +1,6 @@
-const Block = require('./block');
+import Block from './block';
 
-class Blockchain {
+export default class Blockchain {
   constructor() {
     this.chain = [Block.genesis()];
   };
@@ -37,5 +37,3 @@ class Blockchain {
     this.chain = newChain;
   };
 };
-
-module.exports = Blockchain;

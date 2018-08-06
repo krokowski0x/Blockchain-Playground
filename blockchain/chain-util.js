@@ -1,9 +1,10 @@
-const EC = require('elliptic').ec;
-const SHA256 = require('crypto-js/sha256');
-const uuidV1 = require('uuid/v1');
+import { EC } from 'elliptic';
+import SHA256 from 'crypto-js/sha256';
+import uuidV1 from 'uuid/v1';
+
 const ec = new EC('secp256k1');
 
-class ChainUtil {
+export default class ChainUtil {
   static genKeyPair() {
     return ec.genKeyPair();
   };
@@ -20,5 +21,3 @@ class ChainUtil {
     return ec.keyFromPublic(publicKey, 'hex').verify(dataHash, signature);
   };
 };
-
-module.exports = ChainUtil;

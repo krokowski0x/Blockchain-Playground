@@ -1,7 +1,7 @@
-const Wallet = require('../wallet');
-const Transaction = require('../wallet/transaction');
+import Wallet from '../wallet';
+import Transaction from '../wallet/transaction';
 
-class Miner {
+export default class Miner {
   constructor(blockchain, transactionPool, wallet, p2pServer) {
     this.blockchain = blockchain;
     this.transactionPool = transactionPool;
@@ -19,6 +19,4 @@ class Miner {
 
     return block;
   };
-}
-;
-module.exports = Miner;
+};
