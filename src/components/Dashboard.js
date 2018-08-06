@@ -7,8 +7,6 @@ import styled from "styled-components";
 
 import Block from './Block';
 
-library.add(faStroopwafel);
-
 const Container = styled.div`
   margin: 0vh 10vw;
   height: 80vh;
@@ -29,7 +27,7 @@ export default class Dashboard extends Component {
       <Container>
         <h1>Blockchain Playground</h1>
         <h3>This app will help You undarstand basics of blockchain technology, as well as cryptocurrencies based on it. Let's dive in!</h3>
-        <FontAwesomeIcon icon="stroopwafel" />
+        <FontAwesomeIcon icon="arrow-down" />
       </Container>
     );
   }
