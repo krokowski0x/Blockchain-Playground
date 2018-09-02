@@ -1,103 +1,103 @@
-const Wallet = require("../wallet/wallet");
-const TransactionPool = require("../wallet/transaction-pool");
-const Blockchain = require("../blockchain/blockchain");
-const { INITIAL_BALANCE } = require("../blockchain/config");
+import Wallet from "../wallet/wallet";
+import TransactionPool from "../wallet/transaction-pool";
+import Blockchain from "../blockchain/blockchain";
+import { INITIAL_BALANCE } from "../blockchain/config";
 
 describe("Wallet", () => {
-	let wallet, tp, bc;
+  let wallet, tp, bc;
 
-	beforeEach(() => {
-		wallet = new Wallet();
-		tp = new TransactionPool();
-		bc = new Blockchain();
-	});
+  beforeEach(() => {
+    wallet = new Wallet();
+    tp = new TransactionPool();
+    bc = new Blockchain();
+  });
 
-	describe("creating a transaction", () => {
-		let transaction, sendAmount, recipient;
+  describe("creating a transaction", () => {
+    let transaction, sendAmount, recipient;
 
-		beforeEach(() => {
-			sendAmount = 50;
-			recipient = "r4nd0m-4ddr355";
-			transaction = wallet.createTransaction(recipient, sendAmount, bc, tp);
-		});
+    beforeEach(() => {
+      sendAmount = 50;
+      recipient = "r4nd0m-4ddr355";
+      transaction = wallet.createTransaction(recipient, sendAmount, bc, tp);
+    });
 
-		describe("and doing the same transaction", () => {
-			beforeEach(() => {
-				wallet.createTransaction(recipient, sendAmount, bc, tp);
-			});
+    describe("and doing the same transaction", () => {
+      beforeEach(() => {
+        wallet.createTransaction(recipient, sendAmount, bc, tp);
+      });
 
-			it("doubles the `sendAmount` subtracted from the wallet balance", () => {
-				expect(
-					transaction.outputs.find(
-						output => output.address === wallet.publicKey
-					).amount
-				).toEqual(wallet.balance - sendAmount * 2);
-			});
+      it("doubles the `sendAmount` subtracted from the wallet balance", () => {
+        expect(
+          transaction.outputs.find(
+            output => output.address === wallet.publicKey
+          ).amount
+        ).toEqual(wallet.balance - sendAmount * 2);
+      });
 
-			it("clones the `sendAmount` output for the recipient", () => {
-				expect(
-					transaction.outputs
-						.filter(output => output.address === recipient)
-						.map(output => output.amount)
-				).toEqual([sendAmount, sendAmount]);
-			});
-		});
-	});
+      it("clones the `sendAmount` output for the recipient", () => {
+        expect(
+          transaction.outputs
+            .filter(output => output.address === recipient)
+            .map(output => output.amount)
+        ).toEqual([sendAmount, sendAmount]);
+      });
+    });
+  });
 
-	describe("calculating a balance", () => {
-		let addBalance, repeatAdd, senderWallet;
+  describe("calculating a balance", () => {
+    let addBalance, repeatAdd, senderWallet;
 
-		beforeEach(() => {
-			senderWallet = new Wallet();
-			addBalance = 100;
-			repeatAdd = 3;
-			for (let i of repeatAdd)
-				senderWallet.createTransaction(wallet.publicKey, addBalance, bc, tp);
+    beforeEach(() => {
+      senderWallet = new Wallet();
+      addBalance = 100;
+      repeatAdd = new Array(3);
+      for (let i of repeatAdd)
+        senderWallet.createTransaction(wallet.publicKey, addBalance, bc, tp);
 
-			bc.addBlock(tp.transactions);
-		});
+      bc.addBlock(tp.transactions);
+    });
 
-		it("calculates the balance for blockchain transactions matching the recipient", () => {
-			expect(wallet.calculateBalance(bc)).toEqual(
-				INITIAL_BALANCE + addBalance * repeatAdd
-			);
-		});
+    it("calculates the balance for blockchain transactions matching the recipient", () => {
+      expect(wallet.calculateBalance(bc)).toEqual(
+        INITIAL_BALANCE + addBalance * repeatAdd.length
+      );
+    });
 
-		it("calculates the balance for blockchain transactions matching the sender", () => {
-			expect(senderWallet.calculateBalance(bc)).toEqual(
-				INITIAL_BALANCE - addBalance * repeatAdd
-			);
-		});
+    it("calculates the balance for blockchain transactions matching the sender", () => {
+      expect(senderWallet.calculateBalance(bc)).toEqual(
+        INITIAL_BALANCE - addBalance * repeatAdd.length
+      );
+    });
 
-		describe("and the recipient conducts a transaction", () => {
-			let subtractBalance, recipientBalance;
+    describe("and the recipient conducts a transaction", () => {
+      let subtractBalance, recipientBalance;
 
-			beforeEach(() => {
-				tp.clear();
-				subtractBalance = 60;
-				recipientBalance = wallet.calculateBalance(bc);
-				wallet.createTransaction(
-					senderWallet.publicKey,
-					subtractBalance,
-					bc,
-					tp
-				);
-				bc.addBlock(tp.transactions);
-			});
+      beforeEach(() => {
+        tp.clear();
+        subtractBalance = 60;
+        recipientBalance = wallet.calculateBalance(bc);
+        wallet.createTransaction(
+          senderWallet.publicKey,
+          subtractBalance,
+          bc,
+          tp
+        );
+        bc.addBlock(tp.transactions);
+      });
 
-			describe("and the sender sends another transaction to the recipient", () => {
-				beforeEach(() => {
-					tp.clear();
-					senderWallet.createTransaction(wallet.publicKey, addBalance, bc, tp);
-					bc.addBlock(tp.transactions);
-				});
+      describe("and the sender sends another transaction to the recipient", () => {
+        beforeEach(() => {
+          tp.clear();
+          senderWallet.createTransaction(wallet.publicKey, addBalance, bc, tp);
+          bc.addBlock(tp.transactions);
+        });
 
-				it("calculate the recipient balance only using transactions since its most recent one", () => {
-					expect(wallet.calculateBalance(bc)).toEqual(
-						recipientBalance - subtractBalance + addBalance
-					);
-				});
-			});
-		});
-	});
+        it("calculate the recipient balance only using transactions since its most recent one", () => {
+          expect(wallet.calculateBalance(bc)).toEqual(
+            recipientBalance - subtractBalance + addBalance
+          );
+        });
+      });
+    });
+  });
 });
