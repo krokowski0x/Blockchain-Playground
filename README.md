@@ -1,10 +1,10 @@
 # Blockchain Playground
 
-Blockchain and cryptocurrency with educational playground to be added soon.
+Blockchain and cryptocurrency with educational playground to be added **soon**.
 
 ## Brief Description
 
-This project started as a basic blockchain [Udemy](https://www.udemy.com/build-blockchain/) course in Mid 2018. It's final purpose is to have React-based frontend, showing exactly how blockchain, mining and transactions work in real time via interactive playground. **But not yet**. Because I currently have other important projects to finish, this one has to wait, **probably until October 2018**.
+This project started as a basic blockchain [Udemy](https://www.udemy.com/build-blockchain/) course in Mid 2018. It's final purpose is to have React-based frontend, showing exactly how blockchain, mining and transactions work in real time via interactive playground. **But not yet**. Because I currently have other important projects to finish, this one has to wait, **probably until Mid 2019**.
 
 ## Built With
 
